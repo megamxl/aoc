@@ -1,8 +1,7 @@
 #f = open("C:/Users/gerha/Desktop/aoc 2021/day1/input.txt", "r")
-#lines = [int(e) for e in set(f.read().split("\n"))]
+#lines = [int(e) for e in set(f.read().split("/n"))]
 
 from typing import List
-
 
 lines = []
 with open("C:/Users/gerha/Desktop/aoc 2021/day1/input.txt") as f:
@@ -17,7 +16,6 @@ def partOne(lines):
     print(" Ergebnis ist " +  str(cont))
     
 def partTow(list):
-    cont = 0
     summedUp = []
     for i in range(len(list)):
         if i >= 2:
