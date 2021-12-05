@@ -1,24 +1,39 @@
-from os import path
+from typing import List
+
+with open("day4\input.txt") as f:
+    lines = f.read().split("\n\n")
+    NUMS = map(int, lines[0].split(","))
+    BOARDS = [
+        [
+            [int(x) for x in map(str.strip, row.split(" ")) if x]
+            for row in line.split("\n")
+        ]
+        for line in lines[1:]
+    ]
 
 
-with open("day4\smalInput.txt") as puzzle_input:
-    testCase = [line.rstrip('\n').split(" ") for line in puzzle_input.readlines()]
-    #print(testCase)
+def solve() -> List[int]:
+    seen, won, scores = [], [], []
+    for n in NUMS:
+        seen.append(n)
+        for board in BOARDS:
+            transpose = list(zip(*board))
+            for i, line in enumerate(board):
+                if (
+                    all(num in seen for num in line)
+                    or all(num in seen for num in transpose[i])
+                ) and board not in won:
+                    won.append(board)
+                    scores.append(
+                        sum(
+                            sum(num for num in line if num not in seen)
+                            for line in board
+                        )
+                        * seen[-1]
+                    )
+    return scores
 
-with open("day4\input.txt") as puzzle_input:
-    puzzle_input = [line.rstrip('\n').split(" ") for line in puzzle_input.readlines()]
-    #print(puzzle_input)
-    
-    
-with open("day4\smalInput.txt", 'r') as f:
-        nums = f.read().splitlines() # list with all numbers
 
-print(nums)    
-def part1(lines):
-    print("hey")
-
-def part2(lines):
-    print("hey")
-
-part1(testCase)
-part2()
+scores = solve()
+print("part1:", scores[0])
+print("part2:", scores[-1])
