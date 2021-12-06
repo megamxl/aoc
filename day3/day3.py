@@ -61,10 +61,23 @@ def findMoreUsed(lines, currentrow):
         
             
 #partOne(testCase)
+def filter_nums(nums, rating):
+    pos = 0
+    while len(nums) > 1:
+        ones, zero = [], []
+        for num in nums:
+            if num[pos] == '1':
+                ones.append(num)
+            else:
+                zero.append(num)
+        pos += 1
+        by_size = sorted((zero, ones), key=len)
+        nums = by_size[1] if rating == 'O2' else by_size[0]
+    return int(nums[0], 2)
 
-for i in range(len(testCase[0][0])):
-    importantChar = findMoreUsed(testCase,i)
-    for r in range(len(testCase)):
-        if(secondlist[r][0][i] != importantChar):
-            del secondlist[r][0]
-print(secondlist)
+def part2():
+    with open("day3\input.txt", 'r') as f:
+        nums = f.read().splitlines() # list with all numbers
+    return print(filter_nums(nums, 'O2') * filter_nums(nums, 'CO2'))
+
+part2()
