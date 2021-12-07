@@ -19,11 +19,15 @@ def partOne(lines):
                 
 
 def partTow(lines):
-    length_ofLines = len(lines)
-    r = sum(lines) // length_ofLines
-    lambdaAgain = lambda x: x * (x+1) // 2
-    part2 = sum(lambdaAgain(abs(x-r)) for x in lines)
-    print(part2)
+    lines.sort()
+    sol=[]
+    for i in lines:
+        x=0
+        for t in lines: 
+            x+= (abs((i- t))) * ( abs((i- t))+1)/2
+        sol.append(x)
+    print(min(sol))
+    
 
     
 if __name__ == '__main__':

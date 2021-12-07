@@ -1,19 +1,18 @@
+from multiprocessing.dummy import Pool as ThreadPool
 
 with open("day6\input.txt") as puzzle_input:
-    puzzle_input = [line.rstrip('\n').split(",") for line in puzzle_input.readlines()]
+    puzzle_input = [line.split(",") for line in puzzle_input.readlines()]
     puzzle_input = [[int(n) for n in l] for l in puzzle_input]
-    puzzle_input2 = []
     print(type(puzzle_input))
+    lines = puzzle_input
     
-# with open('day6\input.txt') as f:
-#     puzzle_input = f.readlines()
-#     puzzle_input = puzzle_input.split()
-# print(puzzle_input)
+with open('day6\input.txt') as f:
+    puzzle = [int(val) for val in f.read().split(",")]
+print(puzzle)
 
-    
-def partOne(lines):
-    lines2 = lines
-    for t in range(80): 
+def partOne(lines2):
+    #lines2 = lines
+    for t in range(265): 
         for i in range(len(lines[0])):
             if lines[0][i] == 0:
                 lines[0][i] = 6
@@ -21,7 +20,7 @@ def partOne(lines):
             else:
                 lines[0][i] -= 1
         #print(lines)
-        print(t)
+    print(t)
     print(len(lines[len(lines)-1]))
                 
 
@@ -38,8 +37,15 @@ def partTow(lines):
             fish_dict[6] += fish_0
         print(sum(fish_dict.values()))
     
-
-if __name__ == '__main__':
-    partOne(puzzle_input)
-    partTow(puzzle_input)
     
+listHe = [puzzle.count(i) for i in range(0,9)]
+    
+    
+if __name__ == '__main__':
+    #partOne(puzzle_input)
+    #partTow(puzzle_input)
+    
+    import multiprocessing as mp
+    n = mp.cpu_count() * 32  # multiply guard against counting only active cores
+    with mp.Pool(n) as p:
+        p.map(partOne, range(n))
