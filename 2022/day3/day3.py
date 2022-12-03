@@ -2,6 +2,9 @@
 input = "2022/day3/input.txt"
 smallInput = "2022/day3/smalInput.txt"
 
+ascciLowercasePriotizer = 96
+ascciUppercasePriotizer = 38
+
 with open(input) as puzzle_input:
     testCase = [line.rstrip('\n') for line in puzzle_input.readlines()]
 
@@ -17,10 +20,10 @@ def part1(sum, list):
     return sum
 
 def addToProTOSum(currChar):
-    if  ord(currChar) > 96:
-        return ord( currChar) - 96
+    if  ord(currChar) > ascciLowercasePriotizer:
+        return ord( currChar) - ascciLowercasePriotizer
     else:
-        return ord(currChar) -38
+        return ord(currChar) -as
 
 def part2(sum, list):
     for currElemnt in range(0,len(list),3):
@@ -29,8 +32,6 @@ def part2(sum, list):
                     sum += addToProTOSum(currChar)
                     break
     return sum
-
-
 
 print(f'challange 1 {part1(0,testCase)}')
 print(f'challange 2 {part2(0,testCase)}')
