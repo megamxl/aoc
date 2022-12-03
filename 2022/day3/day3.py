@@ -10,12 +10,10 @@ def part1(sum, list):
         half  = int(((len(currElemnt))/2))
         str1 = currElemnt[0: half]
         str2 = currElemnt[half:]
-        soll = []
         for currChar in str1:
             if currChar in str2:
-                if currChar not in soll:
-                    soll.append(currChar)
-                    sum += addToProTOSum(currChar)
+                sum += addToProTOSum(currChar)
+                break
     return sum
 
 def addToProTOSum(currChar):
@@ -26,12 +24,10 @@ def addToProTOSum(currChar):
 
 def part2(sum, list):
     for currElemnt in range(0,len(list),3):
-        duplicates = []
         for currChar in list[currElemnt]:
             if currChar in list[currElemnt+1] and currChar in list[currElemnt+2]:
-                if currChar not in duplicates:
-                    duplicates.append(currChar)
                     sum += addToProTOSum(currChar)
+                    break
     return sum
 
 
