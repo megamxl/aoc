@@ -14,10 +14,7 @@ def part2(sum, list):
     for paris in list:
         curr = [paris[0].split("-"), paris[1].split("-")]
         set1, set2 = set(range(int(curr[0][0]), int(curr[0][1])+1)), set(range(int(curr[1][0]), int(curr[1][1])+1))
-        if min(set1) <= max(set2) and min(set2) < min(set1): # part 2
-                sum += 1
-        if min(set2) <= max(set1) and min(set1) <= min(set2):
-                sum += 1
+        if min(set1) <= max(set2) and min(set2) < min(set1) or min(set2) <= max(set1) and min(set1) <= min(set2): sum += 1
     return sum
 
 def isInRange(x1,y1,x2,y2):
