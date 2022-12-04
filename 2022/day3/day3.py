@@ -23,7 +23,7 @@ def addToProTOSum(currChar):
     if  ord(currChar) > ascciLowercasePriotizer:
         return ord( currChar) - ascciLowercasePriotizer
     else:
-        return ord(currChar) -as
+        return ord(currChar)
 
 def part2(sum, list):
     for currElemnt in range(0,len(list),3):
