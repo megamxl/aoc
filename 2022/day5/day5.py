@@ -32,7 +32,7 @@ def moveAtOnce(amount, wrongStart, wrongEnd, stacks):
     
     return(stacks)
 
-def part1(sum, sum2, list):
+def part1(list):
     splitter = 0
     for x in range(0,len(list)):
         if "1" in list[x]:
@@ -81,4 +81,4 @@ def part1(sum, sum2, list):
 
 
 
-print(f'challange 1 and 2: {part1(0,0,testCase)}')
+print(f'challange 1 and 2: {part1(testCase)}')
