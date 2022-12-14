@@ -29,7 +29,6 @@ def moveAtOnce(amount, wrongStart, wrongEnd, stacks):
     for element in swapList:
         stacks[end].insert(i,element) 
         i = i+1
-    
     return(stacks)
 
 def part1(list):
