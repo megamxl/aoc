@@ -1,11 +1,26 @@
-input = "2022/day6/input.txt"
-smallInput = "2022/day6/smalInput.txt"
+from collections import Counter
 
-with open(input) as puzzle_input:
-    testCase = [line.rstrip('\n').split(",") for line in puzzle_input.readlines()]
 
-def part1(sum, sum2, list):
+input = "/Users/mopedmaxl/PycharmProjects/aoc/2022/day6/input.txt"
+smallInput = "/Users/mopedmaxl/PycharmProjects/aoc/2022/day6/smalInput.txt"
 
-    return [sum,sum2]
+with open(smallInput) as puzzle_input:
+    testCase = [line.rstrip('\n') for line in puzzle_input.readlines()]
 
-print(f'challange 1 and 2: {part1(0,0,testCase)}')
+
+def isUniqueChars(string):
+    freq = Counter(string)
+    if (len(freq) == len(string)):
+        return True
+    else:
+        return False
+def part1(list):
+    for line in list:
+        for (start, element) enumerate(line):
+        start = 0
+        end = 4
+        if isUniqueChars()
+        start += 1
+        end += 1
+
+print(f'challange 1 and 2: {part1(testCase)}')
